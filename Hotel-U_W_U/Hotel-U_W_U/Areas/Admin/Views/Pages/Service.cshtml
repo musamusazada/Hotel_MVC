@@ -1,0 +1,54 @@
+﻿@model ServicePage
+<div class="content-body">
+    <div class="row">
+
+        <div class="card col-10 mx-auto">
+            <div class="card-header my-3">
+                <h4 class="card-title">Service Page</h4>
+            </div>
+            <div class="card-body ">
+                <div class="basic-form">
+                    <form enctype="multipart/form-data" method="post" asp-controller="Pages" asp-action="SaveService">
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Logo</label>
+                            <div class="col-sm-10">
+                                <input asp-for="pageFile" class="form-control my-2" value="@Model.pageImg">
+                                <img src="~/img/@Model.pageImg" style="object-fit:cover;width:60px; height:60px;" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input asp-for="pageTitle" class="form-control" placeholder="Title" value="@Model.pageTitle">
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Intro</label>
+                            <div class="col-sm-10">
+                                <input asp-for="pageIntro" class="form-control" placeholder="Intro" value="@Model.pageIntro">
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Main Title</label>
+                            <div class="col-sm-10">
+                                <input asp-for="mainTitle" class="form-control" placeholder="Main Title" value="@Model.mainTitle">
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Main Text</label>
+                            <div class="col-sm-10">
+                                <input asp-for="mainText" class="form-control" placeholder="Phone" value="@Model.mainText">
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

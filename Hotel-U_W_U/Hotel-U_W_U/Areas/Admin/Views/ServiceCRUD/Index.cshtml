@@ -1,0 +1,23 @@
+﻿@model List<Service>
+<div class="content-body">
+    <div class="row">
+
+        <div class="card col-10 mx-auto">
+            <div class="card-header my-3">
+                <h4 class="card-title">Services</h4>
+            </div>
+            @foreach (var service in Model)
+            {
+                <div class="card-body ">
+                    <div class="basic-form">
+                        <div>@service.name</div>
+                        <a class="btn btn-primary m-3" asp-controller="ServiceCRUD" asp-action="Edit" asp-route-id="@service.id">EDIT</a>
+                        <a class="btn btn-danger m-3" asp-controller="ServiceCRUD" asp-action="Delete" asp-route-id="@service.id">Delete</a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>

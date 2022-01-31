@@ -1,0 +1,57 @@
+﻿@model Setting
+<!-- top bar -->
+<div class="hotel-top-bar">
+    <div class="container">
+        <div class="hotel-left-side">
+            <!-- logo -->
+            <a asp-controller="Home" class="hotel-logo-frame" style="width: 50px;">
+                <img src="~/img/@Model.logoImg" alt="logo">
+            </a>
+            <!-- logo end -->
+        </div>
+        <div class="hotel-right-side">
+            <!-- menu -->
+            <div class="hotel-menu">
+                <nav>
+                    <ul>
+                        <li>
+                            <a asp-controller="Home">Ana Səhifə</a>
+                        </li>
+                        <li>
+                            <a asp-controller="About">Haqqımızda</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Hotel">Hotellər</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Room">Otaqlar</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Service">Xidmətlərimiz</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Contact">Əlaqə</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- menu end -->
+            <!-- action button -->
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="Account" asp-action="Login" class="hotel-btn"><img src="~/img/icons/bookmark.svg" alt="icon">Giriş</a>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Logout" class="hotel-btn"><img src="~/img/icons/bookmark.svg" alt="icon">Çıxış</a>
+
+            }
+
+            <!-- action button end -->
+        </div>
+        <!-- menu button -->
+        <div class="hotel-menu-btn"><span></span></div>
+        <!-- menu button end -->
+    </div>
+</div>
+<!-- top bar end -->
