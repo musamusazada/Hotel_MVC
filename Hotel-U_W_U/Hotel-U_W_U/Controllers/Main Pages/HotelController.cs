@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Hotel_U_W_U.DAL;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Hotel_U_W_U.Controllers
 {
     public class HotelController : Controller
     {
-        public IActionResult Index()
+        private readonly AppDbContext _context;
+        public HotelController(AppDbContext context)
         {
-            return View();
+            _context = context;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var hotels = await _context.hotels.ToListAsync();
+            return View(hotels);
         }
     }
 }

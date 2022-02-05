@@ -1,0 +1,90 @@
+﻿@model Room
+
+<div class="content-body">
+    <div class="row">
+
+        <div class="card col-10 mx-auto">
+            <div class="card-header my-3">
+                <h4 class="card-title">Hotel creation</h4>
+            </div>
+            <div class="card-body ">
+                <div class="basic-form">
+                    <form enctype="multipart/form-data" method="post" asp-area="Admin" asp-controller="Hotel" asp-action="CreateRoom" asp-route-id="@ViewData["hotel"]">
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Room Type</label>
+                            <div class="col-sm-10">
+                                <input asp-for="roomType" class="form-control my-2">
+                                <span asp-validation-for='roomType' class="text-danger error--message"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Room Title</label>
+                            <div class="col-sm-10">
+                                <input asp-for="roomTitle" class="form-control" placeholder="Name">
+                                <span asp-validation-for='roomTitle' class="text-danger error--message"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <textarea asp-for="roomDesc" class="form-control" placeholder="Description" style="width:100%; height: 300px; resize:none">
+                                </textarea>
+                                <span asp-validation-for='roomDesc' class="text-danger error--message"></span>
+
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Room Square area</label>
+                            <div class="col-sm-10">
+                                <input asp-for="roomSqr" class="form-control" placeholder="Name">
+                                <span asp-validation-for='roomSqr' class="text-danger error--message"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Adult Count</label>
+                            <div class="col-sm-10">
+                                <input asp-for="adultCount" class="form-control" placeholder="Name">
+                                <span asp-validation-for='adultCount' class="text-danger error--message"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Kid Count</label>
+                            <div class="col-sm-10">
+                                <input asp-for="kidCount" class="form-control" placeholder="Name">
+                                <span asp-validation-for='kidCount' class="text-danger error--message"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Price Per Night</label>
+                            <div class="col-sm-10">
+                                <input asp-for="pricePerNight" class="form-control" placeholder="Name">
+                                <span asp-validation-for='pricePerNight' class="text-danger error--message"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Cover Image</label>
+                            <div class="col-sm-10">
+                                <input asp-for="mainFile" class="form-control" placeholder="Name" accept="image/*">
+                                <span asp-validation-for='mainFile' class="text-danger error--message"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <label class="col-sm-2 col-form-label">Additional Images</label>
+                            <div class="col-sm-10">
+                                <input asp-for="sideFiles" class="form-control" placeholder="Name" accept="image/*">
+                                <span asp-validation-for='sideFiles' class="text-danger error--message"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </div>
+                        <div class="text-danger error--message" asp-validation-summary="ModelOnly"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

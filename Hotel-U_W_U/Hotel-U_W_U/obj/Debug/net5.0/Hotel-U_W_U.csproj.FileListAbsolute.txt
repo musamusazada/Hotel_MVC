@@ -172,3 +172,8 @@ C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\n
 C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\net5.0\Razor\Areas\Admin\Views\Account\Index.cshtml.g.cs
 C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\net5.0\Razor\Areas\Admin\Views\Hotel\CreateHotel.cshtml.g.cs
 C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\net5.0\Razor\Areas\Admin\Views\Hotel\Index.cshtml.g.cs
+C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\net5.0\Razor\Areas\Admin\Views\Hotel\CreateRoom.cshtml.g.cs
+C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\net5.0\Razor\Views\Room\RoomPage.cshtml.g.cs
+C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\net5.0\Razor\Areas\Admin\Views\Pages\HotelsList.cshtml.g.cs
+C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\net5.0\Razor\Areas\Admin\Views\Pages\Reservations.cshtml.g.cs
+C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\net5.0\Razor\Areas\Admin\Views\Pages\RoomList.cshtml.g.cs

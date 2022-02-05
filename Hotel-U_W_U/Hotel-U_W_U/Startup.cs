@@ -34,7 +34,10 @@ namespace Hotel_U_W_U
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSession();
-            services.AddMvc().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            services.AddMvc().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore).AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.DateFormatString = "dd-MM-yyyy";
+            });
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(this.Configuration.GetConnectionString("Default"), builder =>
             {
                 builder.MigrationsAssembly("Hotel-U_W_U");

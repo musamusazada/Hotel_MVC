@@ -1,0 +1,406 @@
+﻿@model RoomViewModel
+<!-- banner -->
+<section class="hotel-banner-simple hotel-transition-bottom">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="hotel-center hotel-title-frame">
+                    <h1 class="hotel-mb-20 hotel-h1-inner">Suite Otaq</h1>
+                    <ul class="hotel-breadcrumbs">
+                        <li><a asp-controller="Home" asp-action="Index">Ana Səhifə</a></li>
+                        <li><a asp-controller="Room" asp-action="Index">Otaqlar</a></li>
+                        <li><span>@Model.room.roomType</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- banner end -->
+<!-- room -->
+<div class="hotel-p-100-100">
+    <div class="container">
+        <div class="row" data-sticky-container>
+            <div class="col-lg-8">
+
+                <div class="hotel-room-detail-slider-frame hotel-mb-60">
+                    <div class="swiper-container hotel-rd-slider-2 hotel-mb-10">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a data-fancybox="gallery" href="img/@Model.room.mainImg" class="hotel-room-detail-photo-lg" data-swiper-parallax="-80" data-swiper-parallax-scale="1.2" data-swiper-parallax-duration="400">
+                                    <img src="~/img/@Model.room.mainImg" alt="room">
+                                    <span class="hotel-zoom"><i class="fas fa-search-plus"></i></span>
+                                </a>
+                            </div>
+                            @foreach (var img in Model.room.sideImages)
+                            {
+                                <div class="swiper-slide">
+                                    <div class="hotel-room-detail-photo-sm">
+                                        <img src="img/@img.img" alt="room">
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                    <div class="swiper-container hotel-rd-slider-1">
+                        <div class="swiper-wrapper">
+                            @foreach (var img in Model.room.sideImages)
+                            {
+                                <div class="swiper-slide">
+                                    <div class="hotel-room-detail-photo-sm">
+                                        <img src="img/@img.img" alt="room">
+                                    </div>
+                                </div>
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- description -->
+                <section class="hotel-mb-60 hotel-scroll-animation">
+                    <h3 class="hotel-mb-40">  @Model.room.roomTitle </h3>
+                    <p>
+                        @Model.room.roomDesc
+                    </p>
+                </section>
+                <!-- description end -->
+                <!-- features -->
+                <section class="hotel-mb-60">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="hotel-mb-40 hotel-scroll-animation">Otağa daxildir</h3>
+                        </div>
+                        <div class="col-6 col-md-3">
+
+                            <!-- icon box -->
+                            <div class="hotel-icon-box hotel-icon-box-sm hotel-scroll-animation">
+                                <img src="~/img/features/1.svg" alt="icon" class="hotel-mb-10">
+                                <h5>Havalimanı tarnsferi</h5>
+                            </div>
+                            <!-- icon box end -->
+
+                        </div>
+                        <div class="col-6 col-md-3">
+
+                            <!-- icon box -->
+                            <div class="hotel-icon-box hotel-icon-box-sm hotel-scroll-animation">
+                                <img src="~/img/features/2.svg" alt="icon" class="hotel-mb-10">
+                                <h5>Hər şey daxildir</h5>
+                            </div>
+                            <!-- icon box end -->
+
+                        </div>
+                        <div class="col-6 col-md-3">
+
+                            <!-- icon box -->
+                            <div class="hotel-icon-box hotel-icon-box-sm hotel-scroll-animation">
+                                <img src="~/img/features/3.svg" alt="icon" class="hotel-mb-10">
+                                <h5>Kondisioner</h5>
+                            </div>
+                            <!-- icon box end -->
+
+                        </div>
+                        <div class="col-6 col-md-3">
+
+                            <!-- icon box -->
+                            <div class="hotel-icon-box hotel-icon-box-sm hotel-scroll-animation">
+                                <img src="~/img/features/4.svg" alt="icon" class="hotel-mb-10">
+                                <h5>Təhlükəsizlik</h5>
+                            </div>
+                            <!-- icon box end -->
+
+                        </div>
+                        <div class="col-6 col-md-3">
+
+                            <!-- icon box -->
+                            <div class="hotel-icon-box hotel-icon-box-sm hotel-scroll-animation">
+                                <img src="~/img/features/5.svg" alt="icon" class="hotel-mb-10">
+                                <h5>Qapalı Hovuz</h5>
+                            </div>
+                            <!-- icon box end -->
+
+                        </div>
+                        <div class="col-6 col-md-3">
+
+                            <!-- icon box -->
+                            <div class="hotel-icon-box hotel-icon-box-sm hotel-scroll-animation">
+                                <img src="~/img/features/6.svg" alt="icon" class="hotel-mb-10">
+                                <h5>Wi-fi</h5>
+                            </div>
+                            <!-- icon box end -->
+
+                        </div>
+                        <div class="col-6 col-md-3">
+
+                            <!-- icon box -->
+                            <div class="hotel-icon-box hotel-icon-box-sm hotel-scroll-animation">
+                                <img src="~/img/features/7.svg" alt="icon" class="hotel-mb-10">
+                                <h5>Smart TV</h5>
+                            </div>
+                            <!-- icon box end -->
+
+                        </div>
+                        <div class="col-6 col-md-3">
+
+                            <!-- icon box -->
+                            <div class="hotel-icon-box hotel-icon-box-sm hotel-scroll-animation">
+                                <img src="~/img/features/8.svg" alt="icon" class="hotel-mb-10">
+                                <h5>Çamaşırxana</h5>
+                            </div>
+                            <!-- icon box end -->
+
+                        </div>
+                    </div>
+                </section>
+                <!-- features end -->
+                <!-- services -->
+                <section class="hotel-mb-30">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="hotel-mb-40 hotel-scroll-animation">Otağa Daxildir</h3>
+                        </div>
+                        <div class="col-lg-4">
+
+                            <!-- service card -->
+                            <div class="hotel-ath-card hotel-scroll-animation">
+                                <div class="hotel-cover-frame">
+                                    <img src="~/img/services/4.jpg" alt="cover">
+                                </div>
+                                <div class="hotel-card-description">
+                                    <h5>Oyun Otağı</h5>
+                                </div>
+                            </div>
+                            <!-- service card end -->
+
+                        </div>
+                        <div class="col-lg-4">
+
+                            <!-- service card -->
+                            <div class="hotel-ath-card hotel-scroll-animation">
+                                <div class="hotel-cover-frame">
+                                    <img src="~/img/services/2.jpg" alt="cover">
+                                </div>
+                                <div class="hotel-card-description">
+                                    <h5>Hovuz</h5>
+                                </div>
+                            </div>
+                            <!-- service card end -->
+
+                        </div>
+                        <div class="col-lg-4">
+
+                            <!-- service card -->
+                            <div class="hotel-ath-card hotel-scroll-animation">
+                                <div class="hotel-cover-frame">
+                                    <img src="~/img/services/3.jpg" alt="cover">
+                                </div>
+                                <div class="hotel-card-description">
+                                    <h5>Restorant</h5>
+                                </div>
+                            </div>
+                            <!-- service card end -->
+
+                        </div>
+                    </div>
+                </section>
+                <!-- services end -->
+                <!-- reviews -->
+                <section class="hotel-mb-30">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="hotel-mb-40 hotel-scroll-animation">Rəylər</h3>
+                        </div>
+                        <div class="col-lg-12">
+
+                            <div class="hotel-review-card hotel-scroll-animation">
+                                <div class="hotel-card-header">
+                                    <div class="hotel-name-and-photo">
+                                        <div class="hotel-avatar-frame">
+                                            <img src="~/img/faces/3.jpg" alt="Avatar">
+                                        </div>
+                                        <div>
+                                            <h5>Anar İsmayilov</h5>
+                                            <span>14.07.2021</span>
+                                        </div>
+                                    </div>
+                                    <ul class="hotel-stars">
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                    </ul>
+                                </div>
+                                <blockquote>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque magnam voluptatum tenetur iusto eaque.
+                                </blockquote>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-12">
+
+                            <div class="hotel-review-card hotel-scroll-animation">
+                                <div class="hotel-card-header">
+                                    <div class="hotel-name-and-photo">
+                                        <div class="hotel-avatar-frame">
+                                            <img src="~/img/faces/2.jpg" alt="Avatar">
+                                        </div>
+                                        <div>
+                                            <h5>Fatime Ferzelizade</h5>
+                                            <span>14.07.2021</span>
+                                        </div>
+                                    </div>
+                                    <ul class="hotel-stars">
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li class="hotel-empty"><i class="fas fa-star"></i></li>
+                                    </ul>
+                                </div>
+                                <blockquote>
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus fugiat molestiae impedit suscipit beatae deserunt minima aut corrupti quibusdam aperiam.
+                                </blockquote>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <!-- reviews end -->
+
+                <section>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="hotel-mb-40 hotel-scroll-animation">Rəy Bildirin</h3>
+                        </div>
+                        <div class="col-lg-12">
+                            <form class="hotel-scroll-animation">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Adınız">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="email" placeholder="Email">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea name="name" rows="8" placeholder="Şərh"></textarea>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="hotel-form-submit-frame">
+                                            <!-- temporary button to show the popup -->
+                                            <a class="hotel-btn" data-fancybox href="#hotel-success">Göndər</a>
+                                            <!-- <button class="hotel-btn">Send</button> -->
+                                            <div class="hotel-text-sm">*Şəxsi məlumatlarınızı üçüncü tərəflərə açıqlamayacağımıza söz veririk..</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <div class="col-lg-4">
+                <!-- sidebar -->
+                <div class="hotel-sticky hotel-stycky-right" data-margin-top="100">
+
+                    <!-- room info -->
+                    <div class="hotel-room-features-lg hotel-mb-20">
+                        <div class="hotel-feature">
+                            <div class="hotel-icon-frame"><img src="~/img/icons/bed.svg" alt="icon"></div>
+                            <span>@(Model.room.kidCount + Model.room.adultCount) neferlik</span>
+                        </div>
+                        <div class="hotel-feature">
+                            <div class="hotel-icon-frame"><img src="~/img/icons/square.svg" alt="icon"></div>
+                            <span>@Model.room.roomSqr Ft²</span>
+                        </div>
+                    </div>
+                    <!-- room info end -->
+
+                    <div class="hotel-price-card hotel-mb-20">
+                        <div class="hotel-price-number">@Model.room.pricePerNight AZN</div>
+                        <div class="hotel-btn">Rezervasiya</div>
+                    </div>
+
+                    <div class="hotel-book-form">
+                        <form autocomplete="off" method="post" asp-controller="Room" asp-action="Reserve" asp-route-id="@Model.room.id">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="hotel-input-frame">
+                                        <label for="check-in">Giriş</label>
+                                        @Html.EditorFor(model => model.reservation.checkIn,
+                                        new {
+                                        htmlAttributes = new {
+                                        @type="text",
+                                        @class = "form-control datepicker-here" },
+
+                                        })
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="hotel-input-frame">
+                                        <label for="check-out" class="hotel-add-icon">Çıxış</label>
+                                        @Html.EditorFor(model => model.reservation.checkOut,
+                                        new {
+                                        htmlAttributes = new {
+                                        @type="text",
+                                        @class = "form-control datepicker-here" },
+                                        })
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="hotel-select-frame">
+                                        <label for="person">Böyük</label>
+                                        <select id="person">
+                                            @for (int i = 1; i <= Model.room.adultCount; i++)
+                                            {
+                                                <option value="@i">@i</option>
+
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="hotel-select-frame">
+                                        <label for="children">Uşaq</label>
+                                        <select id="children">
+                                            @for (int i = 1; i <= Model.room.kidCount; i++)
+                                            {
+                                                <option value="@i">@i</option>
+
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <span class="reserve-feedback text-danger"> @TempData["reservation"]</span>
+
+                                <div class="col-lg-12 hotel-center">
+                                    <button type="submit" class="hotel-btn reserve-btn"><img src="~/img/icons/search.svg" class="hotel-zoom" alt="icon">Rezerv et</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <!-- sidebar end -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- room end -->
+<script>
+
+    window.onload= ()=>{
+      let requireds = document.querySelectorAll(".datepicker-here");
+      [...requireds].forEach(i=>i.setAttribute("required", ""));
+    }
+</script>

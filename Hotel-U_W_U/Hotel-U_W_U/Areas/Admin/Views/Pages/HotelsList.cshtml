@@ -1,0 +1,21 @@
+﻿@model List<Hotel>
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            @foreach (var hotel in Model)
+            {
+                <div class="col-xl-4 col-xxl-6 col-lg-6 col-sm-6 ">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="~/img/@hotel.img" alt="Card image cap">
+                        <div class="card-header">
+                            <h5 class="card-title">@hotel.name</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@hotel.desc</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

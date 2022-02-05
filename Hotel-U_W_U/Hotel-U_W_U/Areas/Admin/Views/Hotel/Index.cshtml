@@ -1,4 +1,9 @@
 ﻿@model Hotel
+@{
+
+    var rooms = ViewData["rooms"] as List<Room>;
+
+}
 <div class="content-body">
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -11,6 +16,34 @@
                     <div class="card-body">
                         <p class="card-text">@Model.desc</p>
                     </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <a asp-controller="Hotel" asp-action="CreateRoom" asp-route-id="@Model.id" class="btn btn-primary">Add Room</a>
+            </div>
+
+            <div class="col-12 my-4">
+                <h2>Rooms</h2>
+                <div class="row">
+                    @foreach (var item in rooms)
+                    {
+                        <div class="col-12 col-md-6 col-lg-4">
+
+
+                            <div class="card " style="position:relative">
+                                <a asp-controller="Hotel" asp-action="DeleteRoom" asp-route-id="@item.id" class="btn btn-danger" style="position:absolute;top:20px;right:50px;">Delete</a>
+                                <img class="card-img-top img-fluid" src="~/img/@item.mainImg" alt="Card image cap" style="height: 200px; object-fit:cover;">
+                                <div class="card-header">
+                                    <h5 class="card-title">@item.roomTitle</h5>
+                                    <p class="card-title">@item.roomType</p>
+                                    <p class="card-title">@item.roomSqr </p>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-title">@item.roomDesc</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

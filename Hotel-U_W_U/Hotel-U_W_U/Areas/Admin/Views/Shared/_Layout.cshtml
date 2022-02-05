@@ -73,11 +73,11 @@
                                     <i class="mdi mdi-account"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="./app-profile.html" class="dropdown-item">
+                                    <a asp-area="Admin" asp-controller="Dashboard" asp-action="Profile" class="dropdown-item">
                                         <i class="icon-user"></i>
                                         <span class="ml-2">Profile </span>
                                     </a>
-                                    <a asp-area="Default" asp-controller="Account" asp-action="Logout" class="dropdown-item">
+                                    <a asp-controller="Account" asp-action="Logout" class="dropdown-item">
                                         <i class="icon-key"></i>
                                         <span class="ml-2">Logout </span>
                                     </a>
@@ -118,10 +118,9 @@
                                 <i class="icon icon-app-store"></i><span class="nav-text">Pages</span>
                             </a>
                             <ul aria-expanded="false">
-                                <li><a asp-area="Admin" asp-controller="Pages" asp-action="Home">Home</a></li>
-                                <li><a asp-area="Admin" asp-controller="Pages" asp-action="About">About</a></li>
-                                <li><a asp-area="Admin" asp-controller="Pages" asp-action="Hotels">Hotels</a></li>
-                                <li><a asp-area="Admin" asp-controller="Pages" asp-action="Rooms">Rooms</a></li>
+                                <li><a asp-area="admin" asp-controller="pages" asp-action="Reservations">Reservations</a></li>
+                                <li><a asp-area="admin" asp-controller="pages" asp-action="HotelsList">Hotels</a></li>
+                                <li><a asp-area="admin" asp-controller="pages" asp-action="RoomList">Rooms</a></li>
                                 <li><a asp-area="Admin" asp-controller="Pages" asp-action="Service">Services</a></li>
                                 <li><a asp-area="Admin" asp-controller="Pages" asp-action="Contact">Contact</a></li>
                             </ul>

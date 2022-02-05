@@ -19,7 +19,7 @@ namespace Hotel_U_W_U.DAL
         public DbSet<Hotel> hotels { get; set; }
         public DbSet<Comment> commnets { get; set; }
         public DbSet<RoomImage> roomImages { get; set; }
-
+        public DbSet<Reservation> Reservations { get; set; }
 
     }
 }

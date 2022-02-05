@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Hotel_U_W_U.Areas.Admin.Controllers
@@ -28,26 +29,23 @@ namespace Hotel_U_W_U.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var user = await UserUtil.GetAuthUserFromHttpContext(_httpContextAccessor, _context);
-            var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
-            if (currentUser.hasHotel)
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            if (user.hasHotel)
             {
                 var hotel = await _context.hotels.FirstOrDefaultAsync(h => h.userID == user.Id);
+                var rooms = await _context.rooms.Where(r => r.isDeleted == false).Include(c => c.hotel).Include(room => room.sideImages).ToListAsync();
+                ViewData["rooms"] = rooms;
                 return View(hotel);
             }
 
             return RedirectToAction(nameof(CreateHotel));
-
-
-
-
         }
         public async Task<IActionResult> CreateHotel()
         {
-            var user = await UserUtil.GetAuthUserFromHttpContext(_httpContextAccessor, _context);
-            var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
+            var user = await _userManager.GetUserAsync(HttpContext.User);
 
-            if (currentUser.hasHotel)
+            if (user.hasHotel)
             {
                 return RedirectToAction(nameof(Index));
 
@@ -58,9 +56,8 @@ namespace Hotel_U_W_U.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateHotel(Hotel model)
         {
-            var user = await UserUtil.GetAuthUserFromHttpContext(_httpContextAccessor, _context);
+            var user = await _userManager.GetUserAsync(HttpContext.User);
 
-            var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
 
 
             model.img = FileUtil.CreateFile(FileConstants.imagePath, model.file);
@@ -75,12 +72,117 @@ namespace Hotel_U_W_U.Areas.Admin.Controllers
             };
 
             await _context.hotels.AddAsync(hotel);
-            currentUser.hasHotel = true;
+            user.hasHotel = true;
             user.hasHotel = true;
             _context.Update(user);
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> CreateRoom(int id)
+        {
+            var hotel = await _context.hotels.FirstOrDefaultAsync(item => item.id == id);
+            if (hotel == null)
+            {
+                return NotFound();
+            }
+            ViewData["hotel"] = hotel.id;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateRoom(Room room, int id)
+        {
+
+            var hotel = await _context.hotels.FirstOrDefaultAsync(item => item.id == id);
+            if (hotel == null)
+            {
+                return NotFound();
+            }
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Invalid Fields");
+                return View();
+            }
+
+            if (!(room.mainFile == null))
+            {
+                if (!room.mainFile.isSupported("image"))
+                {
+                    ModelState.AddModelError("mainFile", "File type is unsupported");
+
+                }
+                if (!room.mainFile.IsGreaterThanGivenLength(1024))
+                {
+                    ModelState.AddModelError("mainFile", "File is too large");
+
+
+                }
+                room.mainImg = FileUtil.CreateFile(FileConstants.imagePath, room.mainFile);
+            }
+            var newRoom = new Room
+            {
+                hotelID = hotel.id,
+                hotel = hotel,
+                roomType = room.roomType,
+                roomDesc = room.roomDesc,
+                roomTitle = room.roomTitle,
+                roomSqr = room.roomSqr,
+                adultCount = room.adultCount,
+                kidCount = room.kidCount,
+                mainImg = room.mainImg,
+                pricePerNight = room.pricePerNight,
+
+            };
+            if (!(room.sideFiles == null))
+            {
+                foreach (var item in room.sideFiles)
+                {
+
+                    if (!item.isSupported("image"))
+                    {
+                        ModelState.AddModelError("sideFile", "File type is unsupported");
+                    }
+                    if (!item.IsGreaterThanGivenLength(1024))
+                    {
+                        ModelState.AddModelError("sideFile", "File is too large");
+                    }
+                    var roomIMAGE = new RoomImage
+                    {
+                        room = newRoom,
+                        roomID = newRoom.id,
+
+                    };
+                    roomIMAGE.img = FileUtil.CreateFile(FileConstants.imagePath, item);
+
+                    await _context.roomImages.AddAsync(roomIMAGE);
+                }
+
+            }
+            else
+            {
+                ModelState.AddModelError("File", "Please enter Side Images");
+            }
+
+
+            await _context.rooms.AddAsync(newRoom);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Hotel");
+        }
+
+
+        public async Task<IActionResult> DeleteRoom(int id)
+        {
+
+            var room = await _context.rooms.FirstOrDefaultAsync(room => room.id == id);
+            room.isDeleted = true;
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+        }
+
     }
 }

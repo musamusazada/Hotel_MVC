@@ -21,7 +21,23 @@ namespace Hotel_U_W_U.Areas.Admin.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult> HotelsList()
+        {
+            var hotelsList = await _context.hotels.ToListAsync();
+            return View(hotelsList);
+        }
+        public async Task<IActionResult> RoomList()
+        {
+            var roomList = await _context.rooms.ToListAsync();
+            return View(roomList);
+        }
 
+        public async Task<IActionResult> Reservations()
+        {
+            var reservationList = await _context.Reservations.ToListAsync();
+
+            return View(reservationList);
+        }
         public IActionResult Contact()
         {
             var cp = _context.ContactPages.FirstOrDefault();

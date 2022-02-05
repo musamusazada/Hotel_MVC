@@ -7,15 +7,19 @@ namespace Hotel_U_W_U.Models.Entities
 {
     public class Room : BaseEntity
     {
-        public Hotel hotel { get; set; }
         public int hotelID { get; set; }
+
+        [ForeignKey("hotelID")]
+        public Hotel hotel { get; set; }
+
+
         [Required]
         public string roomType { get; set; }
         [Required]
         public int adultCount { get; set; }
         [Required]
         public int kidCount { get; set; }
-        [Required]
+
         public string mainImg { get; set; }
         [Required]
         public int roomSqr { get; set; }
@@ -32,7 +36,6 @@ namespace Hotel_U_W_U.Models.Entities
         public string roomDesc { get; set; }
         public List<RoomImage> sideImages { get; set; }
         [NotMapped]
-
         public IFormFile[] sideFiles { get; set; }
 
         public List<Comment> comments { get; set; }

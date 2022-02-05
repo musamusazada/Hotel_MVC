@@ -46,7 +46,7 @@ namespace Hotel_U_W_U.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> MakeAdmin(string id)
+        public async Task<IActionResult> MakeAdmin(string id, List<UserViewModel> models)
         {
             var user = await _userManager.FindByIdAsync(id);
             if (user == null)
@@ -78,7 +78,7 @@ namespace Hotel_U_W_U.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Account");
 
             }
-            user.hasHotel = true;
+
             await _userManager.RemoveFromRoleAsync(user, RoleConstants.User);
             await _userManager.AddToRoleAsync(user, RoleConstants.Hotel);
             await _context.SaveChangesAsync();
