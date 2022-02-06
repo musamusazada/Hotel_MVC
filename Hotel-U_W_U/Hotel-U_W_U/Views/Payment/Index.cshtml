@@ -1,0 +1,52 @@
+﻿@model Payment
+<section class="d-flex align-items-center justify-content-center" style="height: 90vh">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6">
+                <div class="payment-card d-flex flex-column">
+                    <div class="payment-card-head">
+                        Total: @TempData["totalPrice"] AZN
+                    </div>
+                    <div class="basic-form">
+                        <form method="post" asp-action="Pay" asp-route-total="@TempData["totalPrice"]">
+                            <div class="form-group row my-2">
+                                <label class="col-sm-2 col-form-label">Card Number</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="cardNumber" class="form-control my-2">
+                                </div>
+                            </div>
+                            <div class="form-group row my-2">
+                                <label class="col-sm-2 col-form-label">Fullname</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="fullName" class="form-control my-2">
+                                </div>
+                            </div>
+                            <div class="form-group row my-2">
+                                <label class="col-sm-2 col-form-label">CVC</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="cvc" class="form-control my-2">
+                                </div>
+                            </div>
+
+                            <div class="form-group row my-2">
+                                <label class="col-sm-2 col-form-label">Expiration Month</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="month" class="form-control my-2">
+                                </div>
+                            </div>
+                            <div class="form-group row my-2">
+                                <label class="col-sm-2 col-form-label">Expiration Year</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="year" class="form-control my-2">
+                                </div>
+                            </div>
+
+                            <input type="submit" class="btn btn-success">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

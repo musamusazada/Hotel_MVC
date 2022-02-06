@@ -40,6 +40,7 @@ namespace Hotel_U_W_U.Controllers
         public async Task<IActionResult> Reserve(RoomViewModel roomVM, int id)
         {
             var reservations = await _context.Reservations.Where(r => r.roomID == id).ToListAsync();
+            var room = await _context.rooms.FirstOrDefaultAsync(r => r.id == id);
             DateTime checkIn = roomVM.reservation.checkIn;
             DateTime checkOut = roomVM.reservation.checkOut;
             List<bool> availability = new List<bool>();
@@ -55,7 +56,15 @@ namespace Hotel_U_W_U.Controllers
                 await _context.Reservations.AddAsync(newReservation);
                 await _context.SaveChangesAsync();
                 TempData["reservation"] = "Success";
-                return RedirectToAction("RoomPage", new { id = id });
+                //return RedirectToAction("RoomPage", new { id = id });
+
+
+                //On Success We calculate the total payment and pass it to the Payment Controller
+                int dayDiff = Convert.ToInt32((checkOut.Subtract(checkIn)).Days);
+                int totalPrice = dayDiff * room.pricePerNight;
+
+                return RedirectToAction("Index", "Payment", new { total = totalPrice });
+
             }
             else
             {
@@ -93,7 +102,13 @@ namespace Hotel_U_W_U.Controllers
                 await _context.Reservations.AddAsync(newReservation);
                 await _context.SaveChangesAsync();
                 TempData["reservation"] = "Success";
-                return RedirectToAction("RoomPage", new { id = id });
+                //return RedirectToAction("RoomPage", new { id = id });
+
+                //On Success We calculate the total payment and pass it to the Payment Controller
+                int dayDiff = Convert.ToInt32((checkOut.Subtract(checkIn)).Days);
+                int totalPrice = dayDiff * room.pricePerNight;
+
+                return RedirectToAction("Index", "Payment", new { total = totalPrice });
             }
 
             ViewData["reservation"] = "Please pick a valid date";

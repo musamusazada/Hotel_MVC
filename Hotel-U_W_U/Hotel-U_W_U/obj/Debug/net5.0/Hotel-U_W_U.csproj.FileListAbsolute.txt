@@ -177,3 +177,5 @@ C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\n
 C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\net5.0\Razor\Areas\Admin\Views\Pages\HotelsList.cshtml.g.cs
 C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\net5.0\Razor\Areas\Admin\Views\Pages\Reservations.cshtml.g.cs
 C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\net5.0\Razor\Areas\Admin\Views\Pages\RoomList.cshtml.g.cs
+C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\bin\Debug\net5.0\Stripe.net.dll
+C:\Users\musam\Desktop\Back-End\ASP_NET_CORE\Hotel-U_W_U\Hotel-U_W_U\obj\Debug\net5.0\Razor\Views\Payment\Index.cshtml.g.cs
